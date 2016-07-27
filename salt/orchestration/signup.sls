@@ -153,7 +153,7 @@ Ensure {{ grains.cluster_name }} asg exists:
               export {{ key }}='{{ val }}'
               {% endfor -%}
               EOF
-              cat << EOF > /etc/init/signup
+              cat << EOF > /etc/init/signup.conf
               description "signup"
               start on (filesystem)
               stop on runlevel [016]
