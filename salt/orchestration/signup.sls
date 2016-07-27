@@ -141,6 +141,7 @@ Ensure {{ grains.cluster_name }} asg exists:
               cd /srv/signup
               virtualenv venv
               source venv/bin/activate
+              pip install -U pip
               pip install -r requirements.txt
               deactivate
               gem install compass
