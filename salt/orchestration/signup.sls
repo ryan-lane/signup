@@ -135,7 +135,7 @@ Ensure {{ grains.cluster_name }} asg exists:
             salt: |
               #!/bin/bash
               apt-get -y update
-              apt-get -y install python python-pip python-dev build-essential libffi-dev ruby-full npm nodejs nodejs-legacy git git-core libxml2-dev libxmlsec1-dev
+              apt-get -y install python python-virtualenv python-pip python-dev build-essential libffi-dev ruby-full npm nodejs nodejs-legacy git git-core libxml2-dev libxmlsec1-dev
               cd /srv
               git clone https://github.com/ryan-lane/signup
               cd /srv/signup
