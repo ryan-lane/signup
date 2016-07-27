@@ -1,0 +1,29 @@
+<div class="alert alert-warning" ng-show="saveError">
+  <p>{{ saveError }} <a href="#/signup">Return to shift list.</a></p>
+</div>
+<div class="alert alert-success" ng-show="success">
+  <p>Signup successful. <a href="#/signup">Return to shift list.</a></p>
+</div>
+<h2>Sign up for a shift</h2>
+<form editable-form name="editableForm" onaftersave="postShift()" oncancel="cancel()" shown="true" class="well">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <span id="name" e-required editable-text="shift.name">{{ shift.name }}</span>
+  </div>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <span id="email" e-required editable-text="shift.email">{{ shift.email }}</span>
+  </div>
+  <div class="form-group">
+    <label for="shift">Shift</label>
+    <span id="shift">{{ shift.position }}</span>
+    </span>
+  </div>
+  <div class="buttons">
+    <span ng-show="editableForm.$visible">
+      <button type="submit" class="btn btn-primary" ng-disabled="editableForm.$waiting">Save</button>
+      <button type="button" class="btn btn-alternate" ng-disabled="editableForm.$waiting" ng-click="editableForm.$cancel()">Cancel</button>
+    </span>
+  </div>
+</form>
+</div>

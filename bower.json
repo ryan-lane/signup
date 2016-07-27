@@ -1,0 +1,16 @@
+{
+  "name": "signup",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.3.20",
+    "bootstrap": "3.3.4",
+    "angular-resource": "1.3.20",
+    "angular-cookies": "1.3.20",
+    "angular-route": "1.3.20",
+    "angular-bootstrap": "~0.11.2",
+    "angular-ui-router": "~0.2.13",
+    "angular-xeditable": "~0.1.9",
+    "jquery": "2.1.4"
+  },
+  "appPath": "signup/public"
+}

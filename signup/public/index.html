@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns:ng="http://angularjs.org" id="ng-app" class="no-js" data-ng-controller="SignupMainCtrl" ng-class="pageClass" ng-app="signupApp" data-is-mobile>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/main.css -->
+  <!-- injector:css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endinjector -->
+  <!-- endbuild -->
+
+</head>
+<body>
+  <!--[if lt IE 9]>
+  <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <header id="page-header" class="header">
+    <nav id="site-navigation">
+      <div class="container-fluid">
+        <p class="site-logo visible-sm visible-md visible-lg"></p>
+        <h1><a href="#/signup">Chillits 2016</a></h1>
+      </div>
+    </nav>
+  </header>
+
+  <div ui-view="main" class="container-fluid container-body">
+  </div>
+
+  <!-- build:js scripts/oldieshim.js -->
+  <!--[if lt IE 9]>
+  <script src="bower_components/es5-shim/es5-shim.js"></script>
+  <script src="bower_components/json3/lib/json3.js"></script>
+  <![endif]-->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js scripts/scripts.js -->
+  <!-- injector:js -->
+  <script src="modules/app.js"></script>
+  <script src="modules/common/common.js"></script>
+  <script src="modules/common/constants.js"></script>
+  <script src="modules/common/controllers/MainCtrl.js"></script>
+  <script src="modules/common/controllers/ShiftCtrl.js"></script>
+  <script src="modules/common/controllers/controllers.js"></script>
+  <script src="modules/common/services/NavService.js"></script>
+  <script src="modules/common/services/Shift.js"></script>
+  <script src="modules/common/services/services.js"></script>
+  <script src="modules/routes/routes.js"></script>
+  <!-- endinjector -->
+  <!-- endbuild -->
+</body>
+</html>
