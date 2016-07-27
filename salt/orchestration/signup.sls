@@ -123,6 +123,7 @@ Ensure {{ grains.cluster_name }} asg exists:
       - image_id: ami-3bdd502c
       - key_name: {{ pillar.ssh_boot_key_name }}
       - security_groups:
+        - base
         - {{ grains.cluster_name }}
       - instance_profile_name: {{ grains.cluster_name }}
       # TODO: load this from pillars
