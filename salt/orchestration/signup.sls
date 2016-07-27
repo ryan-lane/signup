@@ -100,6 +100,13 @@ Ensure {{ grains.cluster_name }} elb exists:
           instance_port: 80
           elb_protocol: HTTP
           instance_protocol: HTTP
+        {% if pillar.get('elb_cert', '') %}
+        - elb_port: 443
+          instance_port: 80
+          elb_protocol: HTTPS
+          instance_protocol: HTTP
+          certificate: '{{ pillar.elb_cert }}'
+        {% endif %}
     - health_check:
         target: 'HTTP:80/healthcheck'
         timeout: 4
@@ -159,10 +166,9 @@ Ensure {{ grains.cluster_name }} asg exists:
               stop on runlevel [016]
               respawn
               script
-                 cd /srv/signup
-                 . service.env
-                 . venv/bin/activate
-                 gunicorn wsgi:app --workers=2 -k gevent
+                . /srv/signup/service.env
+                cd /srv/signup
+                exec /srv/signup/venv/bin/gunicorn wsgi:app --workers=2 -k gevent
               end script
               EOF
               service signup start
