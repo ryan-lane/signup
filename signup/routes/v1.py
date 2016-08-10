@@ -1,5 +1,6 @@
 import copy
 import logging
+import base64
 
 import requests
 from flask import request
@@ -37,6 +38,7 @@ def put_shift(shift_id):
     if shift_data is None:
         return jsonify({'error': 'Shift does not exist.'}), 404
     shift_code = shift_data.get('code', 'default')
+    body = base64.b64decode(app.config['TICKETS_EMAIL_BODY'])
     code = app.config['TICKETS_CODE'].get(shift_code)
     data = request.get_json()
     shift = Shift(
@@ -59,7 +61,7 @@ def put_shift(shift_id):
                 'from': app.config['MAILGUN_FROM_ADDRESS'],
                 'to': shift.email,
                 'subject': app.config['TICKETS_EMAIL_SUBJECT'],
-                'text': app.config['TICKETS_EMAIL_BODY'].format(
+                'text': body.format(
                     code=code,
                     position=shift_data['position'],
                     day=shift_data['day'],
