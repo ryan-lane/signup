@@ -24,7 +24,7 @@
   </div>
   <div class="form-group">
     <label for="email">Email Address</label>
-    <span id="email" e-required editable-email="shift.email" onbeforesave="checkEmail($data)">{{ shift.email }}</span>
+    <span id="email" e-ng-pattern="emailFormat" e-required editable-email="shift.email" onbeforesave="checkEmail($data)">{{ shift.email }}</span>
   </div>
   <div class="form-group">
     <label for="shift">Shift</label>

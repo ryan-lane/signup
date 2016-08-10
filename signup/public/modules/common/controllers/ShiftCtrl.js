@@ -24,6 +24,7 @@
             $scope.removeSuccess = false;
             $scope.saveError = false;
             $scope.removeError = false;
+            $scope.emailFormat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[_a-z0-9A-Z]+(\.[a-z0-9A-Z]+)+/;
 
             Shift.get({'id': $stateParams.shiftId}).$promise.then(function(shift) {
                 $scope.shift = shift.shift;
@@ -35,8 +36,7 @@
             };
 
             $scope.checkEmail = function(data) {
-                var emailFormat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{2,5}$/;
-                if (!emailFormat.test(data)) {
+                if (!$scope.emailFormat.test(data)) {
                     return 'Invalid email address format.';
                 }
             };
