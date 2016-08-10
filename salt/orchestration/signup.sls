@@ -157,7 +157,7 @@ Ensure {{ grains.cluster_name }} asg exists:
               node_modules/grunt-cli/bin/grunt build
               cat << EOF > /srv/signup/service.env
               {% for key, val in pillar.signup_env.items() -%}
-              export {{ key }}='{{ val }}'
+              export {{ key }}=$'{{ val }}'
               {% endfor -%}
               EOF
               cat << EOF > /etc/init/signup.conf

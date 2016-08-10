@@ -59,7 +59,12 @@ def put_shift(shift_id):
                 'from': app.config['MAILGUN_FROM_ADDRESS'],
                 'to': shift.email,
                 'subject': app.config['TICKETS_EMAIL_SUBJECT'],
-                'text': app.config['TICKETS_EMAIL_BODY'].format(code=code)
+                'text': app.config['TICKETS_EMAIL_BODY'].format(
+                    code=code,
+                    position=shift_data['position'],
+                    day=shift_data['day'],
+                    time=shift_data['time']
+                )
             }
         )
         msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
