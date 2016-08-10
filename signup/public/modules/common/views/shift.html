@@ -1,8 +1,18 @@
 <div class="alert alert-warning" ng-show="saveError">
   <p>{{ saveError }} <a href="#/signup">Return to shift list.</a></p>
 </div>
-<div class="alert alert-success" ng-show="success">
+<div class="alert alert-warning" ng-show="removeError">
+  <p>{{ removeError }} <a href="#/signup">Return to shift list.</a></p>
+</div>
+<div class="alert alert-success" ng-show="saveSuccess">
   <p>Signup successful. <a href="#/signup">Return to shift list.</a></p>
+</div>
+<div class="alert alert-success" ng-show="removeSuccess">
+  <p>Shift removal successful. <a href="#/signup">Return to shift list.</a></p>
+</div>
+<div ng-show="shift.name">
+  <h2>Remove signup from this shift</h2>
+  <button type="button" class="btn btn-primary" ng-click="removeShift()">Remove signup</button>
 </div>
 <h2>Sign up for a shift</h2>
 <form editable-form name="editableForm" onaftersave="postShift()" oncancel="cancel()" shown="true" class="well">

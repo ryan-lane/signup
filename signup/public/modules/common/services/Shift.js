@@ -11,7 +11,8 @@
 
     .factory('common.Shift', ['$resource', 'SIGNUP_URLS', function($resource, SIGNUP_URLS) {
         return $resource(SIGNUP_URLS.SHIFT, {id: '@id'}, {
-            update: {method: 'PUT', isArray: false}
+            update: {method: 'PUT', isArray: false},
+            remove: {method: 'DELETE', isArray: false}
         });
     }])
 

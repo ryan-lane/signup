@@ -1,3 +1,4 @@
+import json
 from os import getenv
 
 
@@ -80,24 +81,25 @@ MAILGUN_FROM_ADDRESS = str_env('MAILGUN_FROM_ADDRESS')
 # Tickets
 TICKETS_EMAIL_SUBJECT = str_env('TICKETS_EMAIL_SUBJECT')
 TICKETS_EMAIL_BODY = str_env('TICKETS_EMAIL_BODY')
+TICKETS_CODE = json.loads(str_env('TICKETS_CODE', '{}'))
 
 # Shifts
 SHIFTS = {
     'Friday Afternoon and Night Site Coordinator': [
-        {'shift_id': 'frisc1', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '12:00pm - 3:00pm'},
-        {'shift_id': 'friasc1', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '12:00pm - 3:00pm'},
-        {'shift_id': 'frisc2', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '3:00pm - 6:00pm'},
-        {'shift_id': 'friasc2', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '3:00pm - 6:00pm'},
-        {'shift_id': 'frisc3', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '6:00pm - 9:00pm'},
-        {'shift_id': 'friasc3', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '6:00pm - 9:00pm'},
-        {'shift_id': 'frisc4', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '9:00pm - 12:00am'},
-        {'shift_id': 'friasc4', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '9:00pm - 12:00am'},
-        {'shift_id': 'frisc5', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '12:00am - 3:00am'},
-        {'shift_id': 'friasc5', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '12:00am - 3:00am'},
-        {'shift_id': 'frisc6', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '3:00am - 6:00am'},
-        {'shift_id': 'friasc6', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '3:00am - 6:00am'},
-        {'shift_id': 'frisc7', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am'},
-        {'shift_id': 'friasc7', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am'},
+        {'shift_id': 'frisc1', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '12:00pm - 3:00pm', 'code': 'sc'},
+        {'shift_id': 'friasc1', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '12:00pm - 3:00pm', 'code': 'sc'},
+        {'shift_id': 'frisc2', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '3:00pm - 6:00pm', 'code': 'sc'},
+        {'shift_id': 'friasc2', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '3:00pm - 6:00pm', 'code': 'sc'},
+        {'shift_id': 'frisc3', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '6:00pm - 9:00pm', 'code': 'sc'},
+        {'shift_id': 'friasc3', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '6:00pm - 9:00pm', 'code': 'sc'},
+        {'shift_id': 'frisc4', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '9:00pm - 12:00am', 'code': 'sc'},
+        {'shift_id': 'friasc4', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '9:00pm - 12:00am', 'code': 'sc'},
+        {'shift_id': 'frisc5', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '12:00am - 3:00am', 'code': 'sc'},
+        {'shift_id': 'friasc5', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '12:00am - 3:00am', 'code': 'sc'},
+        {'shift_id': 'frisc6', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '3:00am - 6:00am', 'code': 'sc'},
+        {'shift_id': 'friasc6', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '3:00am - 6:00am', 'code': 'sc'},
+        {'shift_id': 'frisc7', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am', 'code': 'sc'},
+        {'shift_id': 'friasc7', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am', 'code': 'sc'},
     ],
     'Friday Afternoon and Night Gate': [
         {'shift_id': 'frigate1', 'position': 'Gate 1', 'day': 'Friday', 'time': '12:00pm - 1:00pm'},
@@ -136,24 +138,24 @@ SHIFTS = {
         {'shift_id': 'fripark12', 'position': 'Parking 2', 'day': 'Friday', 'time': '11:45pm - 1:00am'},
     ],
     'Saturday Morning through Sunday Morning Site Coordinator': [
-        {'shift_id': 'satsc1', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm'},
-        {'shift_id': 'satasc1', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm'},
-        {'shift_id': 'satsc2', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '12:00pm - 3:00pm'},
-        {'shift_id': 'satasc2', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '12:00pm - 3:00pm'},
-        {'shift_id': 'satsc3', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '3:00pm - 6:00pm'},
-        {'shift_id': 'satasc3', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '3:00pm - 6:00pm'},
-        {'shift_id': 'satsc4', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '6:00pm - 9:00pm'},
-        {'shift_id': 'satasc4', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '6:00pm - 9:00pm'},
-        {'shift_id': 'satsc5', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '9:00pm - 12:00am'},
-        {'shift_id': 'satasc5', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '9:00pm - 12:00am'},
-        {'shift_id': 'satsc6', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '12:00am - 3:00am'},
-        {'shift_id': 'satasc6', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '12:00am - 3:00am'},
-        {'shift_id': 'satsc7', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '3:00am - 6:00am'},
-        {'shift_id': 'satasc7', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '3:00am - 6:00am'},
-        {'shift_id': 'satsc8', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '6:00am - 9:00am'},
-        {'shift_id': 'satasc8', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '6:00am - 9:00am'},
-        {'shift_id': 'satsc9', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '9:00am - 12:00pm'},
-        {'shift_id': 'satasc9', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '9:00am - 12:00pm'},
+        {'shift_id': 'satsc1', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
+        {'shift_id': 'satasc1', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
+        {'shift_id': 'satsc2', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '12:00pm - 3:00pm', 'code': 'sc'},
+        {'shift_id': 'satasc2', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '12:00pm - 3:00pm', 'code': 'sc'},
+        {'shift_id': 'satsc3', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '3:00pm - 6:00pm', 'code': 'sc'},
+        {'shift_id': 'satasc3', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '3:00pm - 6:00pm', 'code': 'sc'},
+        {'shift_id': 'satsc4', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '6:00pm - 9:00pm', 'code': 'sc'},
+        {'shift_id': 'satasc4', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '6:00pm - 9:00pm', 'code': 'sc'},
+        {'shift_id': 'satsc5', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '9:00pm - 12:00am', 'code': 'sc'},
+        {'shift_id': 'satasc5', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '9:00pm - 12:00am', 'code': 'sc'},
+        {'shift_id': 'satsc6', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '12:00am - 3:00am', 'code': 'sc'},
+        {'shift_id': 'satasc6', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '12:00am - 3:00am', 'code': 'sc'},
+        {'shift_id': 'satsc7', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '3:00am - 6:00am', 'code': 'sc'},
+        {'shift_id': 'satasc7', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '3:00am - 6:00am', 'code': 'sc'},
+        {'shift_id': 'satsc8', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '6:00am - 9:00am', 'code': 'sc'},
+        {'shift_id': 'satasc8', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '6:00am - 9:00am', 'code': 'sc'},
+        {'shift_id': 'satsc9', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
+        {'shift_id': 'satasc9', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
     ],
     'Saturday Morning through Sunday Morning Gate': [
         {'shift_id': 'satgate1', 'position': 'Gate 1', 'day': 'Saturday', 'time': '9:00am - 10:00am'},

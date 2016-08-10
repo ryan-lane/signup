@@ -4,7 +4,7 @@ import logging
 import requests
 from flask import request
 from flask import jsonify
-from pynamodb.exceptions import PutError
+from pynamodb.exceptions import PutError, DeleteError
 
 from signup import app
 from signup.models.shifts import Shift
@@ -28,6 +28,16 @@ def get_shift(shift_id):
 
 @app.route('/v1/shift/<shift_id>', methods=['PUT'])
 def put_shift(shift_id):
+    shift_data = None
+    for shift_name, shift_section in app.config['SHIFTS'].items():
+        for _shift in shift_section:
+            if _shift['shift_id'] == shift_id:
+                shift_data = _shift
+                break
+    if shift_data is None:
+        return jsonify({'error': 'Shift does not exist.'}), 404
+    shift_code = shift_data.get('code', 'default')
+    code = app.config['TICKETS_CODE'].get(shift_code)
     data = request.get_json()
     shift = Shift(
         shift_id=shift_id,
@@ -49,7 +59,7 @@ def put_shift(shift_id):
                 'from': app.config['MAILGUN_FROM_ADDRESS'],
                 'to': shift.email,
                 'subject': app.config['TICKETS_EMAIL_SUBJECT'],
-                'text': app.config['TICKETS_EMAIL_BODY']
+                'text': app.config['TICKETS_EMAIL_BODY'].format(code=code)
             }
         )
         msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
@@ -68,6 +78,29 @@ def put_shift(shift_id):
             'name': shift.name,
             'email': shift.email
         }
+    })
+
+
+@app.route('/v1/shift/<shift_id>', methods=['DELETE'])
+def delete_shift(shift_id):
+    shift_data = None
+    for shift_name, shift_section in app.config['SHIFTS'].items():
+        for _shift in shift_section:
+            if _shift['shift_id'] == shift_id:
+                shift_data = _shift
+                break
+    if shift_data is None:
+        return jsonify({'error': 'Shift does not exist.'}), 404
+    try:
+        _shift = Shift.get(shift_id)
+    except Shift.DoesNotExist:
+        return jsonify({'error': 'Shift not found or shift already removed.'})
+    try:
+        _shift.delete()
+    except DeleteError:
+        return jsonify({'error': 'Failed to remove shift.'})
+    return jsonify({
+        'shift': {}
     })
 
 

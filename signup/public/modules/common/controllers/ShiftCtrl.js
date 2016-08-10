@@ -20,8 +20,10 @@
         'common.Shift',
         function MainCtrl($scope, $stateParams, $location, $log, $q, Shift) {
             $scope.$log = $log;
-            $scope.success = false;
+            $scope.saveSuccess = false;
+            $scope.removeSuccess = false;
             $scope.saveError = false;
+            $scope.removeError = false;
 
             Shift.get({'id': $stateParams.shiftId}).$promise.then(function(shift) {
                 $scope.shift = shift.shift;
@@ -32,10 +34,29 @@
                 $location.path('/signup');
             };
 
-            $scope.postShift = function(email) {
+            $scope.removeShift = function() {
+                var deferred = $q.defer();
+                Shift.remove({'id': $stateParams.shiftId}).$promise.then(function(shift) {
+                    $scope.removeError = false;
+                    $scope.removeSuccess = true;
+                    deferred.resolve();
+                }, function(res) {
+                    if (res.status === 500) {
+                        $scope.removeError = 'Unexpected server error, please try again.';
+                        $log.error(res);
+                    } else {
+                        $scope.removeError = res.data.error;
+                    }
+                    deferred.reject();
+                });
+                return deferred.promise;
+            };
+
+            $scope.postShift = function() {
                 var deferred = $q.defer();
                 Shift.update({'id': $stateParams.shiftId}, $scope.shift).$promise.then(function(shift) {
-                    $scope.success = true;
+                    $scope.saveError = false;
+                    $scope.saveSuccess = true;
                     deferred.resolve();
                 }, function(res) {
                     if (res.status === 500) {
