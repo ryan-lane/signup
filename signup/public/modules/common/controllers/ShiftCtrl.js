@@ -34,6 +34,13 @@
                 $location.path('/signup');
             };
 
+            $scope.checkEmail = function(data) {
+                var emailFormat = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]{2,5}$/;
+                if (!emailFormat.test(data)) {
+                    return 'Invalid email address format.';
+                }
+            };
+
             $scope.removeShift = function() {
                 var deferred = $q.defer();
                 Shift.remove({'id': $stateParams.shiftId}).$promise.then(function(shift) {
