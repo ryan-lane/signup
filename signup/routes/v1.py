@@ -29,6 +29,11 @@ def get_shift(shift_id):
 
 @app.route('/v1/shift/<shift_id>', methods=['PUT'])
 def put_shift(shift_id):
+    try:
+        shift = Shift.get(shift_id)
+        old_email = shift.email
+    except Shift.DoesNotExist:
+        old_email = None
     shift_data = None
     for shift_name, shift_section in app.config['SHIFTS'].items():
         for _shift in shift_section:
@@ -79,6 +84,36 @@ def put_shift(shift_id):
         )
     except requests.exceptions.RequestException:
         logging.exception('Failed to send email to {0}.'.format(shift.email))
+    if old_email:
+        try:
+            ret = requests.post(
+                '{0}/messages'.format(app.config['MAILGUN_URL']),
+                auth=('api', app.config['MAILGUN_API_KEY']),
+                data={
+                    'from': app.config['MAILGUN_FROM_ADDRESS'],
+                    'to': old_email,
+                    'subject': ('Your chillits shift has been taken by'
+                                ' someone else.'),
+                    'text': (
+                        'Another person has taken over the shift you had'
+                        ' originally signed up for. If you would like to sign'
+                        ' up for another shift, please visit:'
+                        ' https://chillits2016.ryandlane.com/#/signup'
+                    )
+                }
+            )
+            msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
+            logging.info(
+                msg.format(
+                    shift.email,
+                    ret.status_code,
+                    ret.text
+                )
+            )
+        except requests.exceptions.RequestException:
+            logging.exception(
+                'Failed to send email to {0}.'.format(old_email)
+            )
     return jsonify({
         'shift': {
             'shift_id': shift.shift_id,

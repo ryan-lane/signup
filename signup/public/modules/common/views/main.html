@@ -203,11 +203,12 @@ Please don’t sign up for an SC shift if you’ve never been an SC or SCA befor
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="shift in shiftSection">
-      <td>{{ shift.day }}<br/>{{ shift.time }}</td>
-      <td>{{ shift.position }}</td>
-      <td>{{ shift.name }}<br/>{{ shift.email }}</td>
-      <td><a href="#/shift/{{ shift.shift_id }}" ng-hide="shift.email">Sign up</a><a href="#/shift/{{ shift.shift_id }}" ng-show="shift.email">Change</a></td>
+      <tr ng-class="{info: shift.email}" ng-repeat="shift in shiftSection">
+        <th scope="row">{{ shift.day }}<br/>{{ shift.time }}</th>
+        <td>{{ shift.position }}</td>
+        <td>{{ shift.name }}<br/>{{ shift.email }}</td>
+        <td><a href="#/shift/{{ shift.shift_id }}" ng-hide="shift.email">Sign up</a><a href="#/shift/{{ shift.shift_id }}" ng-show="shift.email">Change</a></td>
+      </tr>
     </tbody>
   </table>
 </div>
