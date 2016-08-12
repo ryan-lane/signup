@@ -85,6 +85,7 @@ def put_shift(shift_id):
     except requests.exceptions.RequestException:
         logging.exception('Failed to send email to {0}.'.format(shift.email))
     if old_email:
+        body = base64.b64decode(app.config['TICKETS_EMAIL_BODY_TAKEN'])
         try:
             ret = requests.post(
                 '{0}/messages'.format(app.config['MAILGUN_URL']),
@@ -92,20 +93,20 @@ def put_shift(shift_id):
                 data={
                     'from': app.config['MAILGUN_FROM_ADDRESS'],
                     'to': old_email,
-                    'subject': ('Your chillits shift has been taken by'
-                                ' someone else.'),
-                    'text': (
-                        'Another person has taken over the shift you had'
-                        ' originally signed up for. If you would like to sign'
-                        ' up for another shift, please visit:'
-                        ' https://chillits2016.ryandlane.com/#/signup'
+                    'subject': app.config['TICKETS_EMAIL_SUBJECT_TAKEN'],
+                    'text': body.format(
+                        taken_by=shift.name,
+                        taken_by_email=shift.email,
+                        position=shift_data['position'],
+                        day=shift_data['day'],
+                        time=shift_data['time']
                     )
                 }
             )
             msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
             logging.info(
                 msg.format(
-                    shift.email,
+                    old_email,
                     ret.status_code,
                     ret.text
                 )
@@ -114,6 +115,36 @@ def put_shift(shift_id):
             logging.exception(
                 'Failed to send email to {0}.'.format(old_email)
             )
+    body = base64.b64decode(app.config['CHANGELOG_BODY'])
+    try:
+        ret = requests.post(
+            '{0}/messages'.format(app.config['MAILGUN_URL']),
+            auth=('api', app.config['MAILGUN_API_KEY']),
+            data={
+                'from': app.config['MAILGUN_FROM_ADDRESS'],
+                'to': app.config['CHANGELOG_ADDRESS'],
+                'subject': app.config['CHANGELOG_SUBJECT'],
+                'text': body.format(
+                    taken_by=shift.name,
+                    taken_by_email=shift.email,
+                    position=shift_data['position'],
+                    day=shift_data['day'],
+                    time=shift_data['time']
+                )
+            }
+        )
+    except requests.exceptions.RequestException:
+        logging.exception(
+            'Failed to send email to {0}.'.format(old_email)
+        )
+    msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
+    logging.info(
+        msg.format(
+            app.config['CHANGELOG_ADDRESS'],
+            ret.status_code,
+            ret.text
+        )
+    )
     return jsonify({
         'shift': {
             'shift_id': shift.shift_id,
@@ -137,10 +168,62 @@ def delete_shift(shift_id):
         _shift = Shift.get(shift_id)
     except Shift.DoesNotExist:
         return jsonify({'error': 'Shift not found or shift already removed.'})
+    name = _shift.name
+    email = _shift.email
     try:
         _shift.delete()
     except DeleteError:
         return jsonify({'error': 'Failed to remove shift.'})
+    body = base64.b64decode(app.config['TICKETS_EMAIL_BODY_REMOVED'])
+    try:
+        ret = requests.post(
+            '{0}/messages'.format(app.config['MAILGUN_URL']),
+            auth=('api', app.config['MAILGUN_API_KEY']),
+            data={
+                'from': app.config['MAILGUN_FROM_ADDRESS'],
+                'to': email,
+                'subject': app.config['TICKETS_EMAIL_SUBJECT_REMOVED'],
+                'text': body.format(
+                    position=shift_data['position'],
+                    day=shift_data['day'],
+                    time=shift_data['time']
+                )
+            }
+        )
+        msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
+        logging.info(
+            msg.format(
+                email,
+                ret.status_code,
+                ret.text
+            )
+        )
+    except requests.exceptions.RequestException:
+        logging.exception(
+            'Failed to send email to {0}.'.format(email)
+        )
+    body = base64.b64decode(app.config['CHANGELOG_BODY_REMOVED'])
+    try:
+        ret = requests.post(
+            '{0}/messages'.format(app.config['MAILGUN_URL']),
+            auth=('api', app.config['MAILGUN_API_KEY']),
+            data={
+                'from': app.config['MAILGUN_FROM_ADDRESS'],
+                'to': app.config['CHANGELOG_ADDRESS'],
+                'subject': app.config['CHANGELOG_SUBJECT'],
+                'text': body.format(
+                    name=name,
+                    email=email,
+                    position=shift_data['position'],
+                    day=shift_data['day'],
+                    time=shift_data['time']
+                )
+            }
+        )
+    except requests.exceptions.RequestException:
+        logging.exception(
+            'Failed to send email to {0}.'.format(email)
+        )
     return jsonify({
         'shift': {}
     })
