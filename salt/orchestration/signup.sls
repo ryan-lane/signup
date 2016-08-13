@@ -174,8 +174,9 @@ Ensure {{ grains.cluster_name }} asg exists:
               service signup start
     - vpc_zone_identifier: {{ pillar.vpc_subnets }}
     - availability_zones: {{ pillar.availability_zones }}
-    - min_size: 1
-    - max_size: 1
+    - min_size: 3
+    - max_size: 3
+    - desired_capacity: 3
     - load_balancers:
       - {{ grains.cluster_name }}
     - tags:
