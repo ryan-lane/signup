@@ -20,10 +20,12 @@ def get_shift(shift_id):
     shifts = copy.deepcopy(app.config['SHIFTS'])
     for shift_name, shift_section in shifts.items():
         for shift in shift_section:
-            if _shift and _shift.shift_id == shift_id:
+            if _shift and _shift.shift_id == shift['shift_id']:
                 shift['name'] = _shift.name
                 shift['email'] = _shift.email
-            return jsonify({'shift': shift})
+                return jsonify({'shift': shift})
+            elif shift_id == shift['shift_id']:
+                return jsonify({'shift': shift})
     return jsonify({'error': 'Shift does not exist.'}), 404
 
 
