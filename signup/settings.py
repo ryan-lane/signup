@@ -252,12 +252,12 @@ SHIFTS = {
         {'shift_id': 'satdinclean4', 'position': 'Clean 4', 'day': 'Saturday', 'time': '8:00pm - 9:30pm'}
     ],
     'Sunday Brunch, Prep and Serve': [
-        {'shift_id': 'sunbrunchprep1', 'position': 'Prep 1', 'day': 'Saturday', 'time': '8:00am - 10:00am'},
-        {'shift_id': 'sunbrunchprep2', 'position': 'Prep 2', 'day': 'Saturday', 'time': '8:00am - 10:00am'},
-        {'shift_id': 'sunbrunchprep3', 'position': 'Prep 1', 'day': 'Saturday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchprep4', 'position': 'Prep 2', 'day': 'Saturday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchserv1', 'position': 'Serve 1', 'day': 'Saturday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchserv2', 'position': 'Serve 2', 'day': 'Saturday', 'time': '10:00am - 12:00am'}
+        {'shift_id': 'sunbrunchprep1', 'position': 'Prep 1', 'day': 'Sunday', 'time': '8:00am - 10:00am'},
+        {'shift_id': 'sunbrunchprep2', 'position': 'Prep 2', 'day': 'Sunday', 'time': '8:00am - 10:00am'},
+        {'shift_id': 'sunbrunchprep3', 'position': 'Prep 1', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
+        {'shift_id': 'sunbrunchprep4', 'position': 'Prep 2', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
+        {'shift_id': 'sunbrunchserv1', 'position': 'Serve 1', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
+        {'shift_id': 'sunbrunchserv2', 'position': 'Serve 2', 'day': 'Sunday', 'time': '10:00am - 12:00am'}
     ],
     'Sunday Brunch Clean': [
         {'shift_id': 'sunbrunchclean1', 'position': 'Clean 1', 'day': 'Saturday', 'time': '12:00pm - 1:00pm'},
