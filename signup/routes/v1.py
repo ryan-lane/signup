@@ -31,6 +31,7 @@ def get_shift(shift_id):
 
 @app.route('/v1/shift/<shift_id>', methods=['PUT'])
 def put_shift(shift_id):
+    return jsonify({'error': 'Shift signup is closed.'}), 400
     try:
         shift = Shift.get(shift_id)
         old_email = shift.email
@@ -158,6 +159,7 @@ def put_shift(shift_id):
 
 @app.route('/v1/shift/<shift_id>', methods=['DELETE'])
 def delete_shift(shift_id):
+    return jsonify({'error': 'Shift signup is closed.'}), 400
     shift_data = None
     for shift_name, shift_section in app.config['SHIFTS'].items():
         for _shift in shift_section:
