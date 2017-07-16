@@ -54,12 +54,12 @@ def put_shift(shift_id):
         email=data['email']
     )
     if data.get('change', False):
-        shift.save()
-    else:
         try:
             shift.save(email__null=True)
         except PutError:
             return jsonify({'error': 'Shift already taken.'}), 400
+    else:
+        shift.save()
     try:
         ret = requests.post(
             '{0}/messages'.format(app.config['MAILGUN_URL']),

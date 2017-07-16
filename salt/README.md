@@ -47,6 +47,7 @@ Next, you'll need to create a python virtualenv with the python dependencies:
 ```bash
 virtualenv venv
 source venv/bin/activate
+pip install -U pip
 pip install -r requirements.txt
 ```
 
