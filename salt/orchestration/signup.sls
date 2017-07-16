@@ -11,7 +11,7 @@
 {% endif %}
 {% endfor %}
 
-Ensure {{ grains.cluster_name }} DynamoDB table exists:
+Ensure {{ grains.cluster_name }}-2017 DynamoDB table exists:
   boto_dynamodb.present:
     - name: {{ grains.cluster_name }}
     - read_capacity_units: 10
@@ -80,11 +80,14 @@ Ensure {{ grains.cluster_name }} iam role exists:
               Resource:
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}/*'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017/*'
             - Action:
                 - 'dynamodb:DeleteTable'
               Effect: 'Deny'
               Resource:
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017'
     - profile: orchestration_profile
 
 Ensure {{ grains.cluster_name }} elb exists:
@@ -149,6 +152,7 @@ Ensure {{ grains.cluster_name }} asg exists:
               virtualenv venv
               source venv/bin/activate
               pip install -U pip
+              pip install -r piptools_requirements.txt
               pip install -r requirements.txt
               deactivate
               gem install compass
