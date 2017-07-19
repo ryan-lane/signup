@@ -97,8 +97,8 @@ def put_shift(shift_id):
                     'to': old_email,
                     'subject': app.config['TICKETS_EMAIL_SUBJECT_TAKEN'],
                     'text': body.format(
-                        taken_by=shift.name,
-                        taken_by_email=shift.email,
+                        name=shift.name,
+                        email=shift.email,
                         position=shift_data['position'],
                         day=shift_data['day'],
                         time=shift_data['time']
@@ -127,8 +127,8 @@ def put_shift(shift_id):
                 'to': app.config['CHANGELOG_ADDRESS'],
                 'subject': app.config['CHANGELOG_SUBJECT'],
                 'text': body.format(
-                    taken_by=shift.name,
-                    taken_by_email=shift.email,
+                    name=shift.name,
+                    email=shift.email,
                     position=shift_data['position'],
                     day=shift_data['day'],
                     time=shift_data['time']
