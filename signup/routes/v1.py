@@ -44,9 +44,9 @@ def put_shift(shift_id):
                 break
     if shift_data is None:
         return jsonify({'error': 'Shift does not exist.'}), 404
-    shift_code = shift_data.get('code', 'default')
+    #shift_code = shift_data.get('code', 'default')
     body = base64.b64decode(app.config['TICKETS_EMAIL_BODY'])
-    code = app.config['TICKETS_CODE'].get(shift_code)
+    #code = app.config['TICKETS_CODE'].get(shift_code)
     data = request.get_json()
     shift = Shift(
         shift_id=shift_id,
@@ -69,7 +69,7 @@ def put_shift(shift_id):
                 'to': shift.email,
                 'subject': app.config['TICKETS_EMAIL_SUBJECT'],
                 'text': body.format(
-                    code=code,
+                    #code=code,
                     position=shift_data['position'],
                     day=shift_data['day'],
                     time=shift_data['time']
