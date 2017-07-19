@@ -28,7 +28,9 @@
 
             Shift.get({'id': $stateParams.shiftId}).$promise.then(function(shift) {
                 $scope.shift = shift.shift;
-                $scope.shift.change = true;
+                if ($scope.shift.email) {
+                    $scope.shift.change = true;
+                }
             });
 
             $scope.cancel = function() {
