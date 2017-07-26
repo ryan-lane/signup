@@ -18,8 +18,8 @@ def get_shift(shift_id):
     except Shift.DoesNotExist:
         _shift = None
     shifts = copy.deepcopy(app.config['SHIFTS'])
-    for shift_name, shift_section in shifts.items():
-        for shift in shift_section:
+    for shift_item in shifts:
+        for shift in shift_item['shifts']:
             if _shift and _shift.shift_id == shift['shift_id']:
                 shift['name'] = _shift.name
                 shift['email'] = _shift.email
@@ -37,8 +37,8 @@ def put_shift(shift_id):
     except Shift.DoesNotExist:
         old_email = None
     shift_data = None
-    for shift_name, shift_section in app.config['SHIFTS'].items():
-        for _shift in shift_section:
+    for shift_item in app.config['SHIFTS']:
+        for _shift in shift_item['shifts']:
             if _shift['shift_id'] == shift_id:
                 shift_data = _shift
                 break
@@ -159,8 +159,8 @@ def put_shift(shift_id):
 @app.route('/v1/shift/<shift_id>', methods=['DELETE'])
 def delete_shift(shift_id):
     shift_data = None
-    for shift_name, shift_section in app.config['SHIFTS'].items():
-        for _shift in shift_section:
+    for shift_item in app.config['SHIFTS']:
+        for _shift in shift_item['shifts']:
             if _shift['shift_id'] == shift_id:
                 shift_data = _shift
                 break
@@ -237,8 +237,8 @@ def get_shifts():
     _shifts = {}
     for _shift in Shift.scan():
         _shifts[_shift.shift_id] = {'name': _shift.name, 'email': _shift.email}
-    for shift_name, shift_section in shifts.items():
-        for shift in shift_section:
+    for shift_item in shifts:
+        for shift in shift_item['shifts']:
             shift_id = shift['shift_id']
             if shift_id in _shifts:
                 shift.update(_shifts[shift_id])
