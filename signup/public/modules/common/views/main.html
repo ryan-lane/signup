@@ -193,8 +193,8 @@ Chillits will be September 15th-17th, 2017 at Black Oak Ranch in Mendocino
 Please don’t sign up for an SC shift if you’ve never been an SC or SCA before. This is a really important job, and upon their hard-working and impeccably responsible shoulders, the greater chill rests. As such, all SC and SCA shifts are subject to approval by the SC Coordinator, but at minimum, SCs should have at least two Chillits under their belts, and SCAs have been at least once.
 
 <h2>Shifts</h2>
-<div class="has-margin-bottom-lg" ng-repeat="(sectionName, shiftSection) in shifts">
-  <h3>{{ sectionName }}</h3>
+<div class="has-margin-bottom-lg" ng-repeat="shiftItem in shifts">
+  <h3>{{ shiftItem.name }}</h3>
   <table class="table">
     <thead>
       <tr>
@@ -205,7 +205,7 @@ Please don’t sign up for an SC shift if you’ve never been an SC or SCA befor
       </tr>
     </thead>
     <tbody>
-      <tr ng-class="{info: shift.email}" ng-repeat="shift in shiftSection">
+      <tr ng-class="{info: shift.email}" ng-repeat="shift in shiftItem.shifts">
         <th scope="row">{{ shift.day }}<br/>{{ shift.time }}</th>
         <td>{{ shift.position }}</td>
         <td>{{ shift.name }}<br/>{{ shift.email }}</td>
