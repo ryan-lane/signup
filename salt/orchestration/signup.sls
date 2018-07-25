@@ -20,6 +20,15 @@ Ensure {{ grains.cluster_name }}-2017 DynamoDB table exists:
     - hash_key_data_type: S
     - profile: orchestration_profile
 
+Ensure {{ grains.cluster_name }}-2018 DynamoDB table exists:
+  boto_dynamodb.present:
+    - name: {{ grains.cluster_name }}-2018
+    - read_capacity_units: 10
+    - write_capacity_units: 10
+    - hash_key: shift_id
+    - hash_key_data_type: S
+    - profile: orchestration_profile
+
 Ensure elb-external security group exists:
   boto_secgroup.present:
     - name: elb-external
