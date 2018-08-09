@@ -91,12 +91,15 @@ Ensure {{ grains.cluster_name }} iam role exists:
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}/*'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017/*'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2018'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2018/*'
             - Action:
                 - 'dynamodb:DeleteTable'
               Effect: 'Deny'
               Resource:
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2018'
     - profile: orchestration_profile
 
 Ensure {{ grains.cluster_name }} elb exists:
@@ -169,6 +172,7 @@ Ensure {{ grains.cluster_name }} asg exists:
               pip install -r requirements.txt
               deactivate
               gem install compass
+              npm config set strict-ssl false
               npm install grunt-cli
               npm install
               node_modules/grunt-cli/bin/grunt build
@@ -191,9 +195,9 @@ Ensure {{ grains.cluster_name }} asg exists:
               service signup start
     - vpc_zone_identifier: {{ pillar.vpc_subnets }}
     - availability_zones: {{ pillar.availability_zones }}
-    - min_size: 3
-    - max_size: 3
-    - desired_capacity: 3
+    - min_size: 1
+    - max_size: 1
+    - desired_capacity: 1
     - load_balancers:
       - {{ grains.cluster_name }}
     - tags:
