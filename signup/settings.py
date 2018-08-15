@@ -289,12 +289,12 @@ SHIFTS = [
 #    ]},
     {'name': 'Overnight Cleanup (selecting this shift means staying over Sunday night to clean)',
      'shifts': [
-        {'shift_id': 'sunovernightclean1', 'position': 'Overnight Cleanup 1', 'day': 'Sunday', 'time': '2:00pm - 10:00am'},
-        {'shift_id': 'sunovernightclean2', 'position': 'Overnight Cleanup 2', 'day': 'Sunday', 'time': '2:00pm - 10:00am'},
-        {'shift_id': 'sunovernightclean3', 'position': 'Overnight Cleanup 3', 'day': 'Sunday', 'time': '2:00pm - 10:00am'},
-        {'shift_id': 'sunovernightclean4', 'position': 'Overnight Cleanup 4', 'day': 'Sunday', 'time': '2:00pm - 10:00am'},
-        {'shift_id': 'sunovernightclean5', 'position': 'Overnight Cleanup 5', 'day': 'Sunday', 'time': '2:00pm - 10:00am'},
-        {'shift_id': 'sunovernightclean6', 'position': 'Overnight Cleanup 6', 'day': 'Sunday', 'time': '2:00pm - 10:00am'},
+        {'shift_id': 'sunovernightclean1', 'position': 'Overnight Cleanup 1', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
+        {'shift_id': 'sunovernightclean2', 'position': 'Overnight Cleanup 2', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
+        {'shift_id': 'sunovernightclean3', 'position': 'Overnight Cleanup 3', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
+        {'shift_id': 'sunovernightclean4', 'position': 'Overnight Cleanup 4', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
+        {'shift_id': 'sunovernightclean5', 'position': 'Overnight Cleanup 5', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
+        {'shift_id': 'sunovernightclean6', 'position': 'Overnight Cleanup 6', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
     ]},
 ]
 
