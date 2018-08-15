@@ -93,7 +93,7 @@ TICKETS_EMAIL_BODY_REMOVED = str_env('TICKETS_EMAIL_BODY_REMOVED')
 
 # Shifts
 SHIFTS = [
-    {'name': 'Friday Afternoon and Night Site Coordinator',
+    {'name': 'Friday Afternoon and Night Site Coordinator (two tickets)',
      'shifts': [
         {'shift_id': 'frisc1', 'position': 'Site Coordinator', 'day': 'Friday', 'time': '12:00pm - 3:00pm', 'code': 'sc'},
         {'shift_id': 'friasc1', 'position': 'Assistant Site Coordinator', 'day': 'Friday', 'time': '12:00pm - 3:00pm', 'code': 'sc'},
@@ -110,9 +110,9 @@ SHIFTS = [
         {'shift_id': 'frisc7', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am', 'code': 'sc'},
         {'shift_id': 'friasc7', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am', 'code': 'sc'},
     ]},
-#    {'name': 'Friday Afternoon and Night Gate',
-#     'shifts': [
-#        {'shift_id': 'frigate1', 'position': 'Gate 1', 'day': 'Friday', 'time': '12:00pm - 1:00pm'},
+    {'name': 'Friday Afternoon and Night Gate',
+     'shifts': [
+        {'shift_id': 'frigate1', 'position': 'Gate 1', 'day': 'Friday', 'time': '12:00pm - 1:00pm'},
 #        {'shift_id': 'frigate2', 'position': 'Gate 2', 'day': 'Friday', 'time': '12:00pm - 1:00pm'},
 #        {'shift_id': 'frigate3', 'position': 'Gate 1', 'day': 'Friday', 'time': '1:00pm - 3:00pm'},
 #        {'shift_id': 'frigate4', 'position': 'Gate 2', 'day': 'Friday', 'time': '1:00pm - 3:00pm'},
@@ -132,7 +132,7 @@ SHIFTS = [
 #        {'shift_id': 'frigate18', 'position': 'Gate 2', 'day': 'Saturday', 'time': '12:00am - 1:30am'},
 #        {'shift_id': 'frigate19', 'position': 'Gate 1', 'day': 'Saturday', 'time': '1:30am - 3:00am'},
 #        {'shift_id': 'frigate20', 'position': 'Gate 2', 'day': 'Saturday', 'time': '1:30am - 3:00am'},
-#    ]},
+    ]},
 #    {'name': 'Friday Afternoon Parking',
 #     'shifts': [
 #        {'shift_id': 'fripark1', 'position': 'Parking 1', 'day': 'Friday', 'time': '4:00pm - 5:30pm'},
@@ -148,7 +148,7 @@ SHIFTS = [
 #        {'shift_id': 'fripark11', 'position': 'Parking 1', 'day': 'Friday', 'time': '11:30pm - 1:00am'},
 #        {'shift_id': 'fripark12', 'position': 'Parking 2', 'day': 'Friday', 'time': '11:30pm - 1:00am'},
 #    ]},
-    {'name': 'Saturday Morning through Sunday Morning Site Coordinator',
+    {'name': 'Saturday Morning through Sunday Morning Site Coordinator (two tickets)',
      'shifts': [
         {'shift_id': 'satsc1', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
         {'shift_id': 'satasc1', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
@@ -287,7 +287,7 @@ SHIFTS = [
 #        {'shift_id': 'sunclean3', 'position': 'Cleanup 3', 'day': 'Sunday', 'time': '12:00pm - 2:00pm'},
 #        {'shift_id': 'sunclean4', 'position': 'Cleanup 4', 'day': 'Sunday', 'time': '12:00pm - 2:00pm'},
 #    ]},
-    {'name': 'Overnight Cleanup (selecting this shift means staying over Sunday night to clean)',
+    {'name': 'Overnight Cleanup (selecting this shift means staying over Sunday night to clean) (two tickets)',
      'shifts': [
         {'shift_id': 'sunovernightclean1', 'position': 'Overnight Cleanup 1', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
         {'shift_id': 'sunovernightclean2', 'position': 'Overnight Cleanup 2', 'day': 'Sunday', 'time': '2:00pm - 10:00am', 'code': 'sc'},
