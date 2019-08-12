@@ -29,6 +29,15 @@ Ensure {{ grains.cluster_name }}-2018 DynamoDB table exists:
     - hash_key_data_type: S
     - profile: orchestration_profile
 
+Ensure {{ grains.cluster_name }}-2019 DynamoDB table exists:
+  boto_dynamodb.present:
+    - name: {{ grains.cluster_name }}-2019
+    - read_capacity_units: 10
+    - write_capacity_units: 10
+    - hash_key: shift_id
+    - hash_key_data_type: S
+    - profile: orchestration_profile
+
 Ensure elb-external security group exists:
   boto_secgroup.present:
     - name: elb-external
@@ -93,6 +102,8 @@ Ensure {{ grains.cluster_name }} iam role exists:
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017/*'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2018'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2018/*'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2019'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2019/*'
             - Action:
                 - 'dynamodb:DeleteTable'
               Effect: 'Deny'
@@ -100,6 +111,7 @@ Ensure {{ grains.cluster_name }} iam role exists:
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2017'
                 - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2018'
+                - 'arn:aws:dynamodb:*:*:table/{{ grains.cluster_name }}-2019'
     - profile: orchestration_profile
 
 Ensure {{ grains.cluster_name }} elb exists:
