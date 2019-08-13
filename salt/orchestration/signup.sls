@@ -187,6 +187,9 @@ Ensure {{ grains.cluster_name }} asg exists:
               gem install rb-inotify -v 0.9.10
               gem install compass -v 1.0.3
               npm config set strict-ssl false
+              npm cache clean -f
+              npm install -g n
+              n stable
               npm install grunt-cli
               npm install
               node_modules/grunt-cli/bin/grunt build
