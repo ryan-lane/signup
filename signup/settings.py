@@ -110,7 +110,7 @@ SHIFTS = [
         {'shift_id': 'frisc7', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am', 'code': 'sc'},
         {'shift_id': 'friasc7', 'position': 'Assistant Site Coordinator', 'day': 'Saturday', 'time': '6:00am - 9:00am', 'code': 'sc'},
     ]},
-    {'name': 'Friday Afternoon and Night Gate',
+    {'name': 'Friday Gate and Parking',
      'shifts': [
         {'shift_id': 'frigate1', 'position': 'Gate 1', 'day': 'Friday', 'time': '12:00pm - 1:00pm'},
         {'shift_id': 'frigate2', 'position': 'Gate 2', 'day': 'Friday', 'time': '12:00pm - 1:00pm'},
@@ -133,21 +133,6 @@ SHIFTS = [
         {'shift_id': 'frigate19', 'position': 'Gate 1', 'day': 'Saturday', 'time': '1:30am - 3:00am'},
         {'shift_id': 'frigate20', 'position': 'Gate 2', 'day': 'Saturday', 'time': '1:30am - 3:00am'},
     ]},
-    {'name': 'Friday Afternoon Parking',
-     'shifts': [
-        {'shift_id': 'fripark1', 'position': 'Parking 1', 'day': 'Friday', 'time': '4:00pm - 5:30pm'},
-        {'shift_id': 'fripark2', 'position': 'Parking 2', 'day': 'Friday', 'time': '4:00pm - 5:30pm'},
-        {'shift_id': 'fripark3', 'position': 'Parking 1', 'day': 'Friday', 'time': '5:30pm - 7:00pm'},
-        {'shift_id': 'fripark4', 'position': 'Parking 2', 'day': 'Friday', 'time': '5:30pm - 7:00pm'},
-        {'shift_id': 'fripark5', 'position': 'Parking 1', 'day': 'Friday', 'time': '7:00pm - 8:30pm'},
-        {'shift_id': 'fripark6', 'position': 'Parking 2', 'day': 'Friday', 'time': '7:00pm - 8:30pm'},
-        {'shift_id': 'fripark7', 'position': 'Parking 1', 'day': 'Friday', 'time': '8:30pm - 10:00pm'},
-        {'shift_id': 'fripark8', 'position': 'Parking 2', 'day': 'Friday', 'time': '8:30pm - 10:00pm'},
-        {'shift_id': 'fripark9', 'position': 'Parking 1', 'day': 'Friday', 'time': '10:00pm - 11:30pm'},
-        {'shift_id': 'fripark10', 'position': 'Parking 2', 'day': 'Friday', 'time': '10:00pm - 11:30pm'},
-        {'shift_id': 'fripark11', 'position': 'Parking 1', 'day': 'Friday', 'time': '11:30pm - 1:00am'},
-        {'shift_id': 'fripark12', 'position': 'Parking 2', 'day': 'Friday', 'time': '11:30pm - 1:00am'},
-    ]},
     {'name': 'Saturday Morning through Sunday Morning Site Coordinator *',
      'shifts': [
         {'shift_id': 'satsc1', 'position': 'Site Coordinator', 'day': 'Saturday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
@@ -169,7 +154,7 @@ SHIFTS = [
         {'shift_id': 'satsc9', 'position': 'Site Coordinator', 'day': 'Sunday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
         {'shift_id': 'satasc9', 'position': 'Assistant Site Coordinator', 'day': 'Sunday', 'time': '9:00am - 12:00pm', 'code': 'sc'},
     ]},
-    {'name': 'Saturday Morning through Sunday Morning Gate',
+    {'name': 'Saturday Gate and Parking',
      'shifts': [
         {'shift_id': 'satgate1', 'position': 'Gate 1', 'day': 'Saturday', 'time': '9:00am - 10:00am'},
         {'shift_id': 'satgate2', 'position': 'Gate 2', 'day': 'Saturday', 'time': '9:00am - 10:00am'},
@@ -195,17 +180,6 @@ SHIFTS = [
         {'shift_id': 'sungate2', 'position': 'Gate 2', 'day': 'Sunday', 'time': '12:00am - 1:30am'},
         {'shift_id': 'sungate3', 'position': 'Gate 1', 'day': 'Sunday', 'time': '1:30am - 3:00am'},
         {'shift_id': 'sungate4', 'position': 'Gate 2', 'day': 'Sunday', 'time': '1:30am - 3:00am'},
-    ]},
-    {'name': 'Saturday Afternoon Parking',
-     'shifts': [
-        {'shift_id': 'satpark1', 'position': 'Parking 1', 'day': 'Saturday', 'time': '12:00pm - 1:30pm'},
-        {'shift_id': 'satpark2', 'position': 'Parking 2', 'day': 'Saturday', 'time': '12:00pm - 1:30pm'},
-        {'shift_id': 'satpark3', 'position': 'Parking 1', 'day': 'Saturday', 'time': '1:30pm - 3:00pm'},
-        {'shift_id': 'satpark4', 'position': 'Parking 2', 'day': 'Saturday', 'time': '1:30pm - 3:00pm'},
-        {'shift_id': 'satpark5', 'position': 'Parking 1', 'day': 'Saturday', 'time': '3:00pm - 4:30pm'},
-        {'shift_id': 'satpark6', 'position': 'Parking 2', 'day': 'Saturday', 'time': '3:00pm - 4:30pm'},
-        {'shift_id': 'satpark7', 'position': 'Parking 1', 'day': 'Saturday', 'time': '4:30pm - 6:00pm'},
-        {'shift_id': 'satpark8', 'position': 'Parking 2', 'day': 'Saturday', 'time': '4:30pm - 6:00pm'}
     ]},
     {'name': 'Friday Food',
      'shifts': [

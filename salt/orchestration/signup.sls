@@ -183,7 +183,9 @@ Ensure {{ grains.cluster_name }} asg exists:
               pip install -r piptools_requirements.txt
               pip install -r requirements.txt
               deactivate
-              gem install compass
+              gem install ffi -v 1.10.0
+              gem install rb-inotify -v 0.9.10
+              gem install compass -v 1.0.3
               npm config set strict-ssl false
               npm install grunt-cli
               npm install
