@@ -134,10 +134,10 @@ SHIFTS = [
         {'shift_id': 'frigate20', 'position': 'Gate and Parking 2', 'day': 'Friday', 'time': '8:50pm - 10:30pm'},
         {'shift_id': 'frigate21', 'position': 'Gate and Parking 3', 'day': 'Friday', 'time': '8:50pm - 10:30pm'},
         {'shift_id': 'frigate22', 'position': 'Gate and Parking 4', 'day': 'Friday', 'time': '8:50pm - 10:30pm'},
-        {'shift_id': 'frigate23', 'position': 'Gate and Parking 1', 'day': 'Friday', 'time': '10:20pm - 12:00pm'},
-        {'shift_id': 'frigate24', 'position': 'Gate and Parking 2', 'day': 'Friday', 'time': '10:20pm - 12:00pm'},
-        {'shift_id': 'frigate25', 'position': 'Gate and Parking 3', 'day': 'Friday', 'time': '10:20pm - 12:00pm'},
-        {'shift_id': 'frigate26', 'position': 'Gate and Parking 4', 'day': 'Friday', 'time': '10:20pm - 12:00pm'},
+        {'shift_id': 'frigate23', 'position': 'Gate and Parking 1', 'day': 'Friday', 'time': '10:20pm - 12:00am'},
+        {'shift_id': 'frigate24', 'position': 'Gate and Parking 2', 'day': 'Friday', 'time': '10:20pm - 12:00am'},
+        {'shift_id': 'frigate25', 'position': 'Gate and Parking 3', 'day': 'Friday', 'time': '10:20pm - 12:00am'},
+        {'shift_id': 'frigate26', 'position': 'Gate and Parking 4', 'day': 'Friday', 'time': '10:20pm - 12:00am'},
         {'shift_id': 'frigate27', 'position': 'Gate and Parking 1', 'day': 'Friday', 'time': '11:50pm - 1:30am'},
         {'shift_id': 'frigate28', 'position': 'Gate and Parking 2', 'day': 'Friday', 'time': '11:50pm - 1:30am'},
         {'shift_id': 'frigate29', 'position': 'Gate and Parking 3', 'day': 'Friday', 'time': '11:50pm - 1:30am'},
@@ -196,8 +196,8 @@ SHIFTS = [
         {'shift_id': 'satgate27', 'position': 'Gate and Parking 2', 'day': 'Saturday', 'time': '10:20pm - 12:00am'},
         {'shift_id': 'satgate28', 'position': 'Gate and Parking 1', 'day': 'Saturday', 'time': '11:50pm - 1:30am'},
         {'shift_id': 'satgate29', 'position': 'Gate and Parking 2', 'day': 'Saturday', 'time': '11:50pm - 1:30am'},
-        {'shift_id': 'satgate30', 'position': 'Gate and Parking 1', 'day': 'Sunday', 'time': '1:20pm - 3:00am'},
-        {'shift_id': 'satgate31', 'position': 'Gate and Parking 2', 'day': 'Sunday', 'time': '1:20pm - 3:00am'},
+        {'shift_id': 'satgate30', 'position': 'Gate and Parking 1', 'day': 'Sunday', 'time': '1:20am - 3:00am'},
+        {'shift_id': 'satgate31', 'position': 'Gate and Parking 2', 'day': 'Sunday', 'time': '1:20am - 3:00am'},
     ]},
     {'name': 'Friday Food',
      'shifts': [
@@ -216,10 +216,10 @@ SHIFTS = [
      'shifts': [
         {'shift_id': 'satbrunchprep1', 'position': 'Prep 1', 'day': 'Saturday', 'time': '8:00am - 10:00am'},
         {'shift_id': 'satbrunchprep2', 'position': 'Prep 2', 'day': 'Saturday', 'time': '8:00am - 10:00am'},
-        {'shift_id': 'satbrunchprep3', 'position': 'Prep 1', 'day': 'Saturday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'satbrunchprep4', 'position': 'Prep 2', 'day': 'Saturday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'satbrunchprep5', 'position': 'Serve 1', 'day': 'Saturday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'satbrunchprep6', 'position': 'Serve 2', 'day': 'Saturday', 'time': '10:00am - 12:00am'}
+        {'shift_id': 'satbrunchprep3', 'position': 'Prep 1', 'day': 'Saturday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'satbrunchprep4', 'position': 'Prep 2', 'day': 'Saturday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'satbrunchprep5', 'position': 'Serve 1', 'day': 'Saturday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'satbrunchprep6', 'position': 'Serve 2', 'day': 'Saturday', 'time': '10:00am - 12:00pm'}
     ]},
     {'name': 'Saturday Brunch Clean',
      'shifts': [
@@ -259,11 +259,11 @@ SHIFTS = [
         {'shift_id': 'sunbrunchprep1', 'position': 'Prep 1', 'day': 'Sunday', 'time': '8:00am - 10:00am'},
         {'shift_id': 'sunbrunchprep2', 'position': 'Prep 2', 'day': 'Sunday', 'time': '8:00am - 10:00am'},
         {'shift_id': 'sunbrunchprep3', 'position': 'Prep 3', 'day': 'Sunday', 'time': '8:00am - 10:00am'},
-        {'shift_id': 'sunbrunchprep4', 'position': 'Prep 1', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchprep5', 'position': 'Prep 2', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchprep6', 'position': 'Prep 3', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchserv1', 'position': 'Serve 1', 'day': 'Sunday', 'time': '10:00am - 12:00am'},
-        {'shift_id': 'sunbrunchserv2', 'position': 'Serve 2', 'day': 'Sunday', 'time': '10:00am - 12:00am'}
+        {'shift_id': 'sunbrunchprep4', 'position': 'Prep 1', 'day': 'Sunday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'sunbrunchprep5', 'position': 'Prep 2', 'day': 'Sunday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'sunbrunchprep6', 'position': 'Prep 3', 'day': 'Sunday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'sunbrunchserv1', 'position': 'Serve 1', 'day': 'Sunday', 'time': '10:00am - 12:00pm'},
+        {'shift_id': 'sunbrunchserv2', 'position': 'Serve 2', 'day': 'Sunday', 'time': '10:00am - 12:00pm'}
     ]},
     {'name': 'Sunday Brunch Clean',
      'shifts': [
