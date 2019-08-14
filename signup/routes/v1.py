@@ -17,11 +17,15 @@ from signup.models.logs import Log
 @app.route('/v1/logs', methods=['GET'])
 def get_logs():
     time_format = "%a, %d %b %Y %H:%M:%S %Z"
+    _logs = []
     logs = []
-    for _log in Log.scan():
+    for log in Log.scan():
+        _logs.append({'date': log.log_date, 'message': log.message})
+    sorted(_logs, key=lambda i: i['date'])
+    for log in _logs:
         logs.append('{}: {}'.format(
-            _log.log_date.strftime(time_format),
-            _log.message,
+            log['date'].strftime(time_format),
+            log['message'],
         ))
     return '<br/>'.join(logs)
 
