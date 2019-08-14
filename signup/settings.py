@@ -67,14 +67,12 @@ DYNAMODB_URL = str_env('DYNAMODB_URL')
 # The DynamoDB table to use for storage.
 # Example: mydynamodbtable
 DYNAMODB_TABLE = str_env('DYNAMODB_TABLE')
+DYNAMODB_TABLE_LOGS = str_env('DYNAMODB_TABLE_LOGS')
 # Whether or not to allow signup to generate its own DynamoDB table via
 # PynamoDB.
 DYNAMODB_CREATE_TABLE = bool_env('DYNAMODB_CREATE_TABLE', False)
 # Must be set to the region the server is running.
 AWS_DEFAULT_REGION = str_env('AWS_DEFAULT_REGION', 'us-east-1')
-
-LOG_GROUP = str_env('LOG_GROUP', 'signup')
-LOG_STREAM = str_env('LOG_STREAM', 'signup-stream1')
 
 # Mail
 MAILGUN_URL = str_env('MAILGUN_URL')

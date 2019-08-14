@@ -12,20 +12,17 @@ from pynamodb.exceptions import PutError, DeleteError
 from signup import app
 from signup.clients import cloudwatch_logs
 from signup.models.shifts import Shift
+from signup.models.logs import Log
 
 
-@app.route('/v1/logs/<year_month_day>', methods=['GET'])
-def get_logs(year_month_day):
+@app.route('/v1/logs', methods=['GET'])
+def get_logs():
     time_format = "%a, %d %b %Y %H:%M:%S %Z"
-    dt = datetime.datetime.strptime('year_month_day', '%Y-%m-%d')
-    start_time = int(round(time.mktime(dt.timetuple())))
-    end_time = int(round(time.time()))
-    _logs = cloudwatch_logs.get_logs(start_time, end_time)
     logs = []
-    for _log in _logs:
+    for _log in Log.scan():
         logs.append('{}: {}'.format(
-            time.strftime(time_format, time.localtime(_log['timestamp'])),
-            _log['message'],
+            time.strftime(time_format, _log.log_date),
+            _log.message,
         ))
     return '\n'.join(logs)
 
@@ -108,6 +105,14 @@ def put_shift(shift_id):
         logging.exception('Failed to send email to {0}.'.format(shift.email))
     if old_email:
         body = base64.b64decode(app.config['TICKETS_EMAIL_BODY_TAKEN'])
+        body_text = body.format(
+            name=shift.name,
+            email=shift.email,
+            position=shift_data['position'],
+            day=shift_data['day'],
+            time=shift_data['time']
+        )
+        Log(message=body_text).save()
         try:
             ret = requests.post(
                 '{0}/messages'.format(app.config['MAILGUN_URL']),
@@ -116,13 +121,7 @@ def put_shift(shift_id):
                     'from': app.config['MAILGUN_FROM_ADDRESS'],
                     'to': old_email,
                     'subject': app.config['TICKETS_EMAIL_SUBJECT_TAKEN'],
-                    'text': body.format(
-                        name=shift.name,
-                        email=shift.email,
-                        position=shift_data['position'],
-                        day=shift_data['day'],
-                        time=shift_data['time']
-                    )
+                    'text': body_text,
                 }
             )
             msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
@@ -138,6 +137,14 @@ def put_shift(shift_id):
                 'Failed to send email to {0}.'.format(old_email)
             )
     body = base64.b64decode(app.config['CHANGELOG_BODY'])
+    body_text = body.format(
+        name=shift.name,
+        email=shift.email,
+        position=shift_data['position'],
+        day=shift_data['day'],
+        time=shift_data['time']
+    )
+    Log(message=body_text).save()
     try:
         ret = requests.post(
             '{0}/messages'.format(app.config['MAILGUN_URL']),
@@ -146,13 +153,7 @@ def put_shift(shift_id):
                 'from': app.config['MAILGUN_FROM_ADDRESS'],
                 'to': app.config['CHANGELOG_ADDRESS'],
                 'subject': app.config['CHANGELOG_SUBJECT'],
-                'text': body.format(
-                    name=shift.name,
-                    email=shift.email,
-                    position=shift_data['position'],
-                    day=shift_data['day'],
-                    time=shift_data['time']
-                )
+                'text': body_text,
             }
         )
     except requests.exceptions.RequestException:
@@ -198,6 +199,12 @@ def delete_shift(shift_id):
     except DeleteError:
         return jsonify({'error': 'Failed to remove shift.'})
     body = base64.b64decode(app.config['TICKETS_EMAIL_BODY_REMOVED'])
+    body_text = body.format(
+        position=shift_data['position'],
+        day=shift_data['day'],
+        time=shift_data['time']
+    )
+    Log(message=body_text).save()
     try:
         ret = requests.post(
             '{0}/messages'.format(app.config['MAILGUN_URL']),
@@ -206,11 +213,7 @@ def delete_shift(shift_id):
                 'from': app.config['MAILGUN_FROM_ADDRESS'],
                 'to': email,
                 'subject': app.config['TICKETS_EMAIL_SUBJECT_REMOVED'],
-                'text': body.format(
-                    position=shift_data['position'],
-                    day=shift_data['day'],
-                    time=shift_data['time']
-                )
+                'text': body_text,
             }
         )
         msg = 'Sent email to {0} via mailgun. Status: {1} Return body: {2}'
@@ -226,6 +229,14 @@ def delete_shift(shift_id):
             'Failed to send email to {0}.'.format(email)
         )
     body = base64.b64decode(app.config['CHANGELOG_BODY_REMOVED'])
+    body_text = body.format(
+        name=name,
+        email=email,
+        position=shift_data['position'],
+        day=shift_data['day'],
+        time=shift_data['time']
+    )
+    Log(message=body_text).save()
     try:
         ret = requests.post(
             '{0}/messages'.format(app.config['MAILGUN_URL']),
@@ -234,13 +245,7 @@ def delete_shift(shift_id):
                 'from': app.config['MAILGUN_FROM_ADDRESS'],
                 'to': app.config['CHANGELOG_ADDRESS'],
                 'subject': app.config['CHANGELOG_SUBJECT'],
-                'text': body.format(
-                    name=name,
-                    email=email,
-                    position=shift_data['position'],
-                    day=shift_data['day'],
-                    time=shift_data['time']
-                )
+                'text': body_text,
             }
         )
     except requests.exceptions.RequestException:
