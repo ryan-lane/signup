@@ -97,6 +97,7 @@ Ensure {{ grains.cluster_name }} iam role exists:
                 - 'logs:CreateLogStream'
                 - 'logs:PutLogEvents'
                 - 'logs:DescribeLogStreams'
+                - 'logs:GetLogEvents'
               Effect: 'Allow'
               Resource: 'arn:aws:logs:*:*:*'
         'dynamodb':

@@ -1,6 +1,8 @@
 import copy
 import logging
 import base64
+import time
+import datetime
 
 import requests
 from flask import request
@@ -8,7 +10,24 @@ from flask import jsonify
 from pynamodb.exceptions import PutError, DeleteError
 
 from signup import app
+from signup.clients import cloudwatch_logs
 from signup.models.shifts import Shift
+
+
+@app.route('/v1/logs/<year_month_day>', methods=['GET'])
+def get_logs(year_month_day):
+    time_format = "%a, %d %b %Y %H:%M:%S %Z"
+    dt = datetime.datetime.strptime('year_month_day', '%Y-%m-%d')
+    start_time = int(round(time.mktime(dt.timetuple())))
+    end_time = int(round(time.time()))
+    _logs = cloudwatch_logs.get_logs(start_time, end_time)
+    logs = []
+    for _log in _logs:
+        logs.append('{}: {}'.format(
+            time.strftime(time_format, time.localtime(_log['timestamp'])),
+            _log['message'],
+        ))
+    return '\n'.join(logs)
 
 
 @app.route('/v1/shift/<shift_id>', methods=['GET'])
