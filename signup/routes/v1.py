@@ -21,7 +21,7 @@ def get_logs():
     logs = []
     for log in Log.scan():
         _logs.append({'date': log.log_date, 'message': log.message})
-    sorted(_logs, key=lambda i: i['date'])
+    _logs = sorted(_logs, key=lambda i: i['date'])
     for log in _logs:
         logs.append('{}: {}'.format(
             log['date'].strftime(time_format),
