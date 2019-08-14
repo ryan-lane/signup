@@ -3,7 +3,8 @@
 #
 asn1crypto==0.22.0
 babel==2.4.0              # via delorean
-botocore==1.5.83          # via pynamodb
+boto3==1.9.207
+botocore==1.12.207        # via boto3, pynamodb, s3transfer
 certifi==2017.4.17
 cffi==1.10.0
 cryptography==1.9
@@ -13,7 +14,8 @@ enum34==1.1.6
 flake8==2.4.0
 flask-script==2.0.5
 flask-sslify==0.1.5
-flask==0.10.1             # via flask-script, flask-sslify
+flask==0.10.1
+futures==3.3.0            # via s3transfer
 gevent==1.0.2
 greenlet==0.4.9
 gunicorn==19.3.0
@@ -22,7 +24,7 @@ idna==2.5
 ipaddress==1.0.18
 itsdangerous==0.24        # via flask
 jinja2==2.9.6             # via flask
-jmespath==0.9.3           # via botocore
+jmespath==0.9.3           # via boto3, botocore
 markupsafe==1.0           # via jinja2
 mccabe==0.3.1             # via flake8
 ndg-httpsclient==0.4.2
@@ -38,10 +40,12 @@ python-dateutil==2.6.1    # via botocore, delorean
 pytz==2017.2              # via babel, delorean, tzlocal
 pyyaml==3.11
 requests==2.8.1
+s3transfer==0.2.1         # via boto3
 six==1.10.0
 statsd==3.1
 tzlocal==1.4              # via delorean
+urllib3==1.25.3           # via botocore
 werkzeug==0.12.2          # via flask
 
-# The following packages are considered to be unsafe in a requirements file:
-# pip
+pip==9.0.1
+setuptools==41.1.0
