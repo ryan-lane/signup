@@ -10,7 +10,6 @@ from flask import jsonify
 from pynamodb.exceptions import PutError, DeleteError
 
 from signup import app
-from signup.clients import cloudwatch_logs
 from signup.models.shifts import Shift
 from signup.models.logs import Log
 
