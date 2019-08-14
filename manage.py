@@ -3,11 +3,11 @@
 from flask.ext.script import Manager
 
 from signup import app
-from signup.scripts.utils import DumpCSV
+from signup.scripts.utils import CreateLogs
 
 manager = Manager(app)
 
-manager.add_command("dumpcsv", DumpCSV)
+manager.add_command("create-logs", CreateLogs)
 
 if __name__ == "__main__":
     manager.run()

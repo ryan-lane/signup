@@ -73,6 +73,9 @@ DYNAMODB_CREATE_TABLE = bool_env('DYNAMODB_CREATE_TABLE', False)
 # Must be set to the region the server is running.
 AWS_DEFAULT_REGION = str_env('AWS_DEFAULT_REGION', 'us-east-1')
 
+LOG_GROUP = str_env('LOG_GROUP', 'signup')
+LOG_STREAM = str_env('LOG_STREAM', 'signup-stream1')
+
 # Mail
 MAILGUN_URL = str_env('MAILGUN_URL')
 MAILGUN_API_KEY = str_env('CREDENTIALS_MAILGUN_API_KEY')
