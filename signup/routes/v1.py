@@ -20,10 +20,10 @@ def get_logs():
     logs = []
     for _log in Log.scan():
         logs.append('{}: {}'.format(
-            time.strftime(time_format, _log.log_date),
+            _log.log_date.strftime(time_format),
             _log.message,
         ))
-    return '\n'.join(logs)
+    return '<br/>'.join(logs)
 
 
 @app.route('/v1/shift/<shift_id>', methods=['GET'])
@@ -111,7 +111,6 @@ def put_shift(shift_id):
             day=shift_data['day'],
             time=shift_data['time']
         )
-        Log(message=body_text).save()
         try:
             ret = requests.post(
                 '{0}/messages'.format(app.config['MAILGUN_URL']),
@@ -203,7 +202,6 @@ def delete_shift(shift_id):
         day=shift_data['day'],
         time=shift_data['time']
     )
-    Log(message=body_text).save()
     try:
         ret = requests.post(
             '{0}/messages'.format(app.config['MAILGUN_URL']),
