@@ -61,5 +61,3 @@ flake8==2.4.0
 
 # Our unit testing framework
 pytest==2.8.5
-
-boto3==1.9.207
