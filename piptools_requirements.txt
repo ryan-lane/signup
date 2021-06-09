@@ -15,5 +15,5 @@ pyopenssl==17.1.0
 six==1.10.0               # via cryptography, pyopenssl
 
 # The following packages are considered to be unsafe in a requirements file:
-pip==9.0.1
+pip==19.2
 # setuptools
